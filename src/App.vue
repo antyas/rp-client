@@ -4,13 +4,13 @@
   </w-app>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script setup>
 
-export default defineComponent({
-  name: 'App',
-})
+
 </script>
 
 <style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+}
 </style>
