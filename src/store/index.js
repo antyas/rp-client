@@ -1,13 +1,19 @@
-import { createStore } from 'vuex'
+import { createStore } from 'vuex';
+import characters from './characters.js';
 
-// Create a new store instance.
 const store = createStore({
-  state () {
-    
-  },
+  state: () => ({}),
 
   mutations: {
-    
+
+  },
+
+  actions: {
+
+  },
+
+  modules: {
+    characters,
   }
 })
 
