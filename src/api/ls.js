@@ -3,7 +3,7 @@ function set(key, data) {
 }
 
 function get(key) {
-  JSON.parse(localStorage.getItem(key));
+  return JSON.parse(localStorage.getItem(key));
 }
 
 function load(collection) {
@@ -16,7 +16,7 @@ function save(collection, data) {
 
 function increment(collection) {
   const lastId = +localStorage.getItem(`${collection}-last-id`);
-  const id = lastId ? lastId + 1 : 0;
+  const id = lastId || lastId === 0 ? lastId + 1 : 0;
   localStorage.setItem(`${collection}-last-id`, id);
   return id;
 }
@@ -46,7 +46,7 @@ function remove(collection, id) {
 }
 
 function all(collection) {
-  return get(collection).map((key, value) => value);
+  return get(collection).map(([key, value]) => value);
 }
 
 function one(collection, id) {

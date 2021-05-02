@@ -28,7 +28,10 @@
             {{ item.name }}
           </w-button>
 
-          <w-icon md>
+          <w-icon 
+            md
+            @click="remove(item.id)"
+          >
             mdi mdi-close
           </w-icon>
         </w-flex>
@@ -38,11 +41,22 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
+import { computed, reactive } from 'vue';
 import { useStore } from 'vuex';
+
+const deleteModal = reactive({
+  show: false,
+  title: '',
+  id: 0,
+});
+
+const openDeleteModal = (item) => {
+  this.deleteModal.title = id
+};
 
 const store = useStore();
 
 const list = computed(() => store.getters['characters/getList']);
 const create = (character) => store.dispatch('characters/create', character);
+const remove = (id) => store.dispatch('characters/delete', id);
 </script>
