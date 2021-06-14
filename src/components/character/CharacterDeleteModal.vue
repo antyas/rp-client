@@ -37,7 +37,9 @@ export default {
 
     const character = computed(() => store.state.characters.active);
     const visible = computed(() => store.state.modal.characterDelete);
-    const setVisible = value => store.commit('modal/setCharacterDelete', value);
+    const setVisible = value => value !== visible.value 
+      ? store.commit('modal/setCharacterDelete', value) 
+      : null;
 
     const remove = () => {
       store.dispatch('characters/delete', character.value.id);
