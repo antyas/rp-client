@@ -5,7 +5,7 @@
       bg-color="primary"
       color="white"
       md
-      @click="create({ name: 'Hero' })"
+      route="/create-character"
     >
       Создать
     </w-button>

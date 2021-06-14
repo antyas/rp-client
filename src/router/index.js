@@ -1,6 +1,7 @@
 import { createWebHistory, createRouter } from "vue-router";
 import Main from '@/pages/Main.vue';
 import CharactersList from '@/pages/CharactersList.vue';
+import CreateCharacter from '@/pages/CreateCharacter.vue';
 
 const routes = [
   {
@@ -12,6 +13,11 @@ const routes = [
     path: '/characters-list',
     name: 'characters-list',
     component: CharactersList
+  },
+  {
+    path: '/create-character',
+    name: 'create-character',
+    component: CreateCharacter
   }
 ];
 

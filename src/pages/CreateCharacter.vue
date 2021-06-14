@@ -1,6 +1,6 @@
 <template>
   <div class="create-characters-page">
-    
+    <w-input>Имя</w-input>
   </div>
 </template>
 
@@ -16,6 +16,7 @@ export default {
     
 
     return {
+      
     }
   }
 }
