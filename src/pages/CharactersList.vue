@@ -32,64 +32,39 @@
             text
             lg
             icon="mdi mdi-close"
-            @click="openDeleteModal(item)"
+            @click="remove(item)"
           />
         </w-flex>
       </template>
     </w-list>
-    <character-delete-modal
-      v-if="showDeleteModal"
-      @delete="deleteCharacter"
-      @close="closeDeleteModal"
-    />
   </div>
 </template>
 
 <script>
-import { computed, ref } from 'vue';
+import { computed } from 'vue';
 import { useStore } from 'vuex';
-import CharacterDeleteModal from '@/components/character/CharacterDeleteModal.vue';
 
 export default {
-  components: {
-    CharacterDeleteModal
-  },
 
   setup() {
-    const showDeleteModal = ref(false);
-
-    const openDeleteModal = (item) => {
-      setActive(item);
-      showDeleteModal.value = true;
-    };
-
-    const closeDeleteModal = () => {
-      showDeleteModal.value = false;
-      setActive({});
-    }
-
-    const deleteCharacter = () => {
-      remove();
-      closeDeleteModal();
-    }
-
     const store = useStore();
-    const active = computed(() => store.state.characters.active);
+
     const list = computed(() => store.getters['characters/getList']);
     const create = character => store.dispatch('characters/create', character);
-    const remove = () => store.dispatch('characters/delete', active.value.id);
+    const setVisibleDelete = value => store.commit('modal/setCharacterDelete', value);
     const setActive = character => store.commit('characters/setActive', character);
 
+    const remove = (item) => {
+      setActive(item);
+      setVisibleDelete(true);
+    };
+
     return {
-      showDeleteModal,
-      openDeleteModal,
-      deleteCharacter,
-      closeDeleteModal,
       list,
       create,
       remove,
       setActive,
-      active,
+      setVisibleDelete
     }
   }
 }

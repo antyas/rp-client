@@ -11,18 +11,29 @@
     <main class="grow ma2">
       <router-view />
     </main>
+
+    <character-delete-modal />
   </w-app>
 </template>
 
-<script setup>
+<script>
 import { onMounted } from 'vue';
 import { useStore } from 'vuex';
+import CharacterDeleteModal from '@/components/character/CharacterDeleteModal.vue';
 
-const store = useStore();
+export default {
+  components: {
+    CharacterDeleteModal
+  },
 
-onMounted(() => {
-  store.dispatch('characters/init');
-});
+  setup() {
+    const store = useStore();
+
+    onMounted(() => {
+      store.dispatch('characters/init');
+    });
+  }
+}
 </script>
 
 <style>

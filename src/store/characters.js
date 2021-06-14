@@ -23,7 +23,7 @@ export default {
 
     setActive(state, character) {
       state.active = character;
-    } 
+    }
   },
 
   actions: {
