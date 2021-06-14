@@ -28,35 +28,71 @@
             {{ item.name }}
           </w-button>
 
-          <w-icon 
-            md
-            @click="remove(item.id)"
-          >
-            mdi mdi-close
-          </w-icon>
+          <w-button
+            text
+            lg
+            icon="mdi mdi-close"
+            @click="openDeleteModal(item)"
+          />
         </w-flex>
       </template>
     </w-list>
+    <character-delete-modal
+      v-if="showDeleteModal"
+      @delete="deleteCharacter"
+      @close="closeDeleteModal"
+    />
   </div>
 </template>
 
-<script setup>
-import { computed, reactive } from 'vue';
+<script>
+import { computed, ref } from 'vue';
 import { useStore } from 'vuex';
+import CharacterDeleteModal from '@/components/character/CharacterDeleteModal.vue';
 
-const deleteModal = reactive({
-  show: false,
-  title: '',
-  id: 0,
-});
+export default {
+  components: {
+    CharacterDeleteModal
+  },
 
-const openDeleteModal = (item) => {
-  this.deleteModal.title = id
-};
+  setup() {
+    const showDeleteModal = ref(false);
 
-const store = useStore();
+    const openDeleteModal = (item) => {
+      setActive(item);
+      showDeleteModal.value = true;
+    };
 
-const list = computed(() => store.getters['characters/getList']);
-const create = (character) => store.dispatch('characters/create', character);
-const remove = (id) => store.dispatch('characters/delete', id);
+    const closeDeleteModal = () => {
+      showDeleteModal.value = false;
+      setActive({});
+    }
+
+    const deleteCharacter = () => {
+      remove();
+      closeDeleteModal();
+    }
+
+    const store = useStore();
+    const active = computed(() => store.state.characters.active);
+    const list = computed(() => store.getters['characters/getList']);
+    const create = character => store.dispatch('characters/create', character);
+    const remove = () => store.dispatch('characters/delete', active.value.id);
+    const setActive = character => store.commit('characters/setActive', character);
+
+    return {
+      showDeleteModal,
+      openDeleteModal,
+      deleteCharacter,
+      closeDeleteModal,
+      list,
+      create,
+      remove,
+      setActive,
+      active,
+    }
+  }
+}
+
+
 </script>
