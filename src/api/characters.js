@@ -1,4 +1,4 @@
-import ls from './ls';
+import ls from './core/ls';
 
 const collection = 'characters';
 
