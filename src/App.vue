@@ -12,7 +12,9 @@
       <router-view />
     </main>
 
-    <character-delete-modal />
+    <div class="modals pa2">
+      <character-delete-modal />
+    </div>
   </w-app>
 </template>
 

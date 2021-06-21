@@ -18,7 +18,7 @@
     "@vue/compiler-sfc": "^3.0.5",
     "eslint": "^7.25.0",
     "eslint-plugin-vue": "^7.9.0",
-    "stylus": "^0.54.8",
+    "sass": "^1.35.1",
     "vite": "^2.1.5",
     "vite-plugin-eslint": "^1.1.0"
   }
