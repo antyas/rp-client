@@ -1,4 +1,4 @@
-import ls from './core/ls';
+import ls from '../core/ls';
 
 const collection = 'characters';
 
@@ -19,7 +19,7 @@ export default {
     return ls.all(collection);
   },
 
-  async getOne() {
+  async getOne(id) {
     return ls.one(collection, id);
   },
 }

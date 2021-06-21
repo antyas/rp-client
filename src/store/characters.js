@@ -1,4 +1,4 @@
-import characters from '../api/characters.js';
+import characters from '../services/characters.js';
 
 export default {
   namespaced: true,
