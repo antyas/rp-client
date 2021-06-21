@@ -55,7 +55,7 @@ export default {
 
   getters: {
     getList(state) {
-      return Array.from(state.list).map(([id, item]) => item);
+      return Array.from(state.list).map(([, item]) => item);
     }
   }
 }
