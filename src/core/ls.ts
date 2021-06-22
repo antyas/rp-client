@@ -1,22 +1,14 @@
-interface IListItem {
+import { findOneByProp, removeByProp, updateOneByProp } from "./array";
+
+interface ILSItem {
   id: number;
 }
 
-type ListEntries<T extends IListItem> = Array<[number, T]>
-
-class List<T extends IListItem> extends Map<number, T> {};
-
-export const set = <T extends IListItem>(key: string, data: ListEntries<T>): void =>
+export const save = <T extends ILSItem>(key: string, data: T[]) =>
   localStorage.setItem(key, JSON.stringify(data));
 
-export const get = <T extends IListItem>(key: string): ListEntries<T> =>
+export const load = <T extends ILSItem>(key: string): T[] =>
   JSON.parse(localStorage.getItem(key) || '[]');
-
-export const load = <T extends IListItem>(name: string): List<T> =>
-  new List<T>(get<T>(name))
-
-export const save = <T extends IListItem>(name: string, data: List<T>): void =>
-  set<T>(name, Array.from(data));
 
 export function increment(name: string): number {
   const key = `${name}-last-id`;
@@ -26,34 +18,27 @@ export function increment(name: string): number {
   return id;
 }
 
-export function add<T extends IListItem>(name: string, item: T): T {
+export function add<T extends ILSItem>(name: string, item: T) {
   const list = load(name);
   const id = increment(name);
 
   item.id = id;
-  list.set(id, item);
+  list.push(item);
   save(name, list);
 
   return item;
 }
 
-export function update<T extends IListItem>(name: string, item: T) {
-  const list = load(name);
-  list.set(item.id, item);
+export function update<T extends ILSItem>(name: string, item: T) {
+  const list = updateOneByProp('id', item, load(name));
   save(name, list);
   return item;
 }
 
 export function remove(name: string, id: number) {
-  const list = load(name);
-  list.delete(id);
+  const list = removeByProp('id', id, load(name));
   save(name, list);
 }
 
-export function all<T extends IListItem>(name: string): T[] {
-  return get(name).map(([id, value]) => value);
-}
-
-function one(collection, id) {
-  return load(collection).get(id);
-}
+export const findOne = <T extends ILSItem>(name: string, id: number): T | undefined => 
+  findOneByProp('id', id, load(name));
