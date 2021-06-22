@@ -1,0 +1,67 @@
+{
+  "parser": "vue-eslint-parser",
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "parser": "@typescript-eslint/parser",
+    "ecmaVersion": 2020,
+    "sourceType": "module",
+    "extraFileExtensions": [".html", ".vue"],
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "extends": [
+    "plugin:vue/vue3-recommended",
+    "plugin:vue/vue3-essential",
+    "plugin:vue/vue3-strongly-recommended",
+    "eslint:recommended",
+    "@vue/typescript/recommended",
+    "airbnb-typescript"
+  ],
+  "plugins": [
+    "vue",
+    "@typescript-eslint"
+  ],
+  "rules": {
+    "vue/prop-name-casing": "off",
+    "vue/max-attributes-per-line": ["warn", {
+      "singleline": 1,
+      "multiline": {
+        "max": 1,
+        "allowFirstLine": false
+      }
+    }],
+    "vue/comment-directive": "off",
+    "vue/custom-event-name-casing": "off",
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-var-requires": 0,
+    "import/no-unused-modules": "off",
+    "no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "^h$",
+        "varsIgnorePattern": "^h$"
+      }
+    ],
+    "space-before-function-paren": "off",
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "comma-dangle": [
+      "off"
+    ],
+    "import/no-absolute-path": [
+      "off"
+    ],
+    "import/no-unresolved": [
+      "off"
+    ],
+    "import/prefer-default-export": [
+      "off"
+    ],
+    "no-console": [
+      "off"
+    ]
+  }
+}

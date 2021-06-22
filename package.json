@@ -1,6 +1,6 @@
 {
-  "name": "my-vue-app",
-  "version": "0.0.0",
+  "name": "rp-app",
+  "version": "0.0.1",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -8,6 +8,12 @@
   },
   "dependencies": {
     "@mdi/font": "^5.9.55",
+    "@typescript-eslint/eslint-plugin": "^4.28.0",
+    "@typescript-eslint/parser": "^4.28.0",
+    "@vue/eslint-config-typescript": "^7.0.0",
+    "@vuedx/typescript-plugin-vue": "^0.7.4",
+    "eslint-config-airbnb-typescript": "^12.3.1",
+    "typescript": "^4.3.4",
     "vue": "^3.0.5",
     "vue-router": "^4.0.6",
     "vuex": "^4.0.0",

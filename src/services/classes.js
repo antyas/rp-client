@@ -1,3 +1,6 @@
+import { findOneByProp } from '../core/array';
 import list from '../content/classes';
-import Content from '../core/content';
-export default new Content(list);
+
+export const findClass = (prop, value) => findOneByProp(prop, value, list);
+
+export const getAllClasses = () => list;
