@@ -48,19 +48,10 @@
       "error",
       "single"
     ],
-    "comma-dangle": [
-      "off"
-    ],
     "import/no-absolute-path": [
       "off"
     ],
-    "import/no-unresolved": [
-      "off"
-    ],
     "import/prefer-default-export": [
-      "off"
-    ],
-    "no-console": [
       "off"
     ]
   }

@@ -1,4 +1,4 @@
-export default [
+const list: CharacterClass[] = [
   {
     id: 0,
     name: 'Воин',
@@ -139,3 +139,5 @@ export default [
     feature: 'Раз в день принятие чужого обличия. Раз в день 1 помеха для противника.'
   },
 ];
+
+export default list;
