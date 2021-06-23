@@ -9,40 +9,30 @@
     {{ character?.name }} будет удален безвозвратно
     <template #actions>
       <div class="spacer" />
-      <w-button
-        class="mr2"
-        bg-color="error"
-        @click="setVisible(false)"
-      >
-        Нет
-      </w-button>
-      <w-button
-        bg-color="success"
-        @click="remove"
-      >
-        Да
-      </w-button>
+      <w-button class="mr2" bg-color="error" @click="setVisible(false)">Нет</w-button>
+      <w-button bg-color="success" @click="remove">Да</w-button>
     </template>
   </w-dialog>
 </template>
 
-<script>
+<script lang="ts">
 /* eslint-disable vue/require-explicit-emits */
-import { useStore } from 'vuex';
-import { computed } from 'vue';
+import { useStore } from "vuex";
+import { computed, defineComponent } from "vue";
 
-export default {
+export default defineComponent({
   setup() {
     const store = useStore();
 
     const character = computed(() => store.state.characters.active);
     const visible = computed(() => store.state.modal.characterDelete);
-    const setVisible = value => value !== visible.value 
-      ? store.commit('modal/setCharacterDelete', value) 
-      : null;
+    const setVisible = (value: boolean) =>
+      value !== visible.value
+        ? store.commit("modal/setCharacterDelete", value)
+        : null;
 
     const remove = () => {
-      store.dispatch('characters/delete', character.value.id);
+      store.dispatch("characters/delete", character.value.id);
       setVisible(false);
     };
 
@@ -50,8 +40,8 @@ export default {
       character,
       remove,
       visible,
-      setVisible
-    }
-  }
-}
+      setVisible,
+    };
+  },
+});
 </script>

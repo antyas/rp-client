@@ -2,9 +2,7 @@
   <w-app>
     <header>
       <w-toolbar shadow>
-        <div class="title2">
-          RP App
-        </div>
+        <div class="title2">RP App</div>
         <div class="spacer" />
       </w-toolbar>
     </header>
@@ -18,24 +16,24 @@
   </w-app>
 </template>
 
-<script>
-import { onMounted } from 'vue';
-import { useStore } from 'vuex';
-import CharacterDeleteModal from '@/components/character/CharacterDeleteModal.vue';
+<script lang="ts">
+import { defineComponent, onMounted } from "vue";
+import { useStore } from "vuex";
+import CharacterDeleteModal from "@/components/character/CharacterDeleteModal.vue";
 
-export default {
+export default defineComponent({
   components: {
-    CharacterDeleteModal
+    CharacterDeleteModal,
   },
 
   setup() {
     const store = useStore();
 
     onMounted(() => {
-      store.dispatch('characters/init');
+      store.dispatch("characters/init");
     });
-  }
-}
+  },
+});
 </script>
 
 <style>
