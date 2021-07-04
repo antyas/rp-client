@@ -9,6 +9,6 @@ export const removeByProp = <T>(prop: keyof T, value: any, array: T[]) =>
 
 export const updateOneByProp = <T>(prop: keyof T, item: T, array: T[]) => {
   removeByProp(prop, item[prop], array);
-  array.push(item);
+  array.unshift(item);
   return array;
 }

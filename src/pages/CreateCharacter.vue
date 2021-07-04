@@ -4,22 +4,9 @@
   </div>
 </template>
 
-<script>
-// import { ref } from 'vue';
-// import { useStore } from 'vuex';
+<script lang="ts">
+import { defineComponent } from "vue";
+import { useCharacter } from '@/core/characters';
 
-export default {
-
-  setup() {
-    // const store = useStore();
-
-    
-
-    return {
-      
-    }
-  }
-}
-
-
+export default defineComponent(useCharacter);
 </script>

@@ -18,20 +18,19 @@
 
 <script lang="ts">
 import { defineComponent, onMounted } from "vue";
-import { useStore } from "vuex";
+import { initCharacters } from '@/core/characters';
 import CharacterDeleteModal from "@/components/character/CharacterDeleteModal.vue";
 
 export default defineComponent({
-  components: {
-    CharacterDeleteModal,
-  },
 
   setup() {
-    const store = useStore();
-
     onMounted(() => {
-      store.dispatch("characters/init");
+      initCharacters();
     });
+
+    return {
+      CharacterDeleteModal
+    }
   },
 });
 </script>
