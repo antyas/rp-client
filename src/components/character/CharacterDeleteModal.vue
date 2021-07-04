@@ -1,15 +1,15 @@
 <template>
   <w-dialog
-    :model-value="visible"
+    :model-value="modal.isActive"
     title="Точно хочешь удалить персонажа?"
     persistent
     :width="550"
-    @input="setVisible"
+    @input="modal.switch"
   >
     {{ character?.name }} будет удален безвозвратно
     <template #actions>
       <div class="spacer" />
-      <w-button class="mr2" bg-color="error" @click="setVisible(false)">Нет</w-button>
+      <w-button class="mr2" bg-color="error" @click="close">Нет</w-button>
       <w-button bg-color="success" @click="remove">Да</w-button>
     </template>
   </w-dialog>
@@ -18,29 +18,26 @@
 <script lang="ts">
 /* eslint-disable vue/require-explicit-emits */
 import { useStore } from "vuex";
+import { useModal, EModal } from '@/core/modal';
 import { computed, defineComponent } from "vue";
 
 export default defineComponent({
   setup() {
     const store = useStore();
+    const modal = useModal(EModal.CharacterDelete);
 
     const character = computed(() => store.state.characters.active);
-    const visible = computed(() => store.state.modal.characterDelete);
-    const setVisible = (value: boolean) =>
-      value !== visible.value
-        ? store.commit("modal/setCharacterDelete", value)
-        : null;
 
     const remove = () => {
       store.dispatch("characters/delete", character.value.id);
-      setVisible(false);
+      modal.switch(false);
     };
 
     return {
       character,
+      modal,
       remove,
-      visible,
-      setVisible,
+      close,
     };
   },
 });

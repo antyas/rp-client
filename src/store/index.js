@@ -1,6 +1,5 @@
 import { createStore, createLogger } from 'vuex';
 import characters from './characters.js';
-import modal from './modal.js';
 
 const store = createStore({
   plugins: [createLogger()],
@@ -17,7 +16,6 @@ const store = createStore({
 
   modules: {
     characters,
-    modal
   }
 })
 

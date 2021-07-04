@@ -1,4 +1,4 @@
-import * as ls from '../core/ls';
+import * as ls from '../core/utils/ls';
 
 const collection = 'characters';
 

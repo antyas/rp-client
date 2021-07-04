@@ -1,4 +1,4 @@
-import characters from '../services/characters.js';
+import * as characters from '../services/character.ts';
 
 export default {
   namespaced: true,
