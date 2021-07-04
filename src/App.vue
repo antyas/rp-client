@@ -22,15 +22,14 @@ import { initCharacters } from '@/core/characters';
 import CharacterDeleteModal from "@/components/character/CharacterDeleteModal.vue";
 
 export default defineComponent({
+  components: {
+    CharacterDeleteModal,
+  },
 
   setup() {
     onMounted(() => {
       initCharacters();
     });
-
-    return {
-      CharacterDeleteModal
-    }
   },
 });
 </script>

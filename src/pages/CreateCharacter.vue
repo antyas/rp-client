@@ -5,8 +5,22 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-import { useCharacter } from '@/core/characters';
+import { defineComponent, reactive, ref } from "vue";
+import { useCharacters } from '@/core/characters';
+import { useContent, EContent } from '@/core/content';
 
-export default defineComponent(useCharacter);
+const { create } = useCharacters();
+const { list: classes } = useContent<CharacterClass>(EContent.Classes);
+const { list: races } = useContent<CharacterRace>(EContent.Races);
+
+export default defineComponent(() => ({
+  create,
+  classes,
+  races,
+  hero: reactive({
+    name: '',
+    class: null,
+    race: null,
+  }),
+}));
 </script>

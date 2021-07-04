@@ -31,11 +31,10 @@ const updateActive = async () => {
   collection.update(active);
 };
 
-const createFromActive = async () => {
-  logger.print('create', active);
-  list.value.unshift(active);
-  collection.add(active);
-  clearActive();
+const create = async (character: Character) => {
+  logger.print('create', character);
+  list.value.unshift(character);
+  collection.add(character);
 }
 
 const setActive = async (character: Character) => { 
@@ -52,6 +51,7 @@ export const useCharacters = () => ({
   list: readonly(list),
   deleteById,
   setActive,
+  create
 });
 
 export const useCharacter = () => ({
@@ -59,6 +59,5 @@ export const useCharacter = () => ({
   remove: deleteActive,
   update: updateActive,
   clear: clearActive,
-  set: setActive,
-  create: createFromActive
+  set: setActive
 });
