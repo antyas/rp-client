@@ -2,8 +2,8 @@ import { ref, computed } from 'vue';
 import { log } from './utils/logger';
 
 export enum EModal {
-  None,
-  CharacterDelete,
+  None = 'none',
+  CharacterDelete = 'character-delete',
 }
 
 const activeModal = ref(EModal.None);

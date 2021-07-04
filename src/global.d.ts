@@ -34,8 +34,8 @@ declare global {
 
   type Character = {
     id: number,
-    name: string,
-    class: CharacterClass,
-    race: CharacterRace,
+    name?: string,
+    class?: CharacterClass,
+    race?: CharacterRace,
   };
 }
