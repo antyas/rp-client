@@ -1,6 +1,6 @@
 import classes from '@/content/classes';
 import races from '@/content/races';
-import { findByProp, findOneByProp } from './utils/array';
+import { findByProp, findOneByProp, unshift } from './utils/array';
 
 export enum EContent {
   Classes,
@@ -22,6 +22,6 @@ export const useContent = <T extends Content>(content: EContent) => {
   return {
     list,
     get: (id: number) => findOneByProp<T>('id', id, list),
-    find: (prop: keyof T, value: any) => findByProp(prop, value, list)
+    find: (prop: keyof T, value: any) => findByProp(prop, value, list),
   }
 }

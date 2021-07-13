@@ -1,6 +1,17 @@
 export { };
 
 declare global {
+  type CalcValue = {
+    value: number,
+    dice: number,
+    sign: 'plus' | 'minus' | 'both',
+  }
+
+  type ContentSelectOption = {
+    name: string,
+    id: number,
+  }
+
   type CharacterAtributes = {
     strength: number,
     perception: number,
@@ -12,9 +23,9 @@ declare global {
   };
 
   type CharacterCondition = {
-    health: number,
-    magicka: number,
-    fatigue: number,
+    health?: number,
+    magicka?: number,
+    fatigue?: number,
   }
 
   type CharacterClass = {
@@ -30,6 +41,22 @@ declare global {
     attributes: CharacterAtributes,
     condition: CharacterCondition,
     feature: string,
+  }
+
+  type CharacterAge = {
+    id: number,
+    name: string,
+    pointsPerLevel: number,
+    startPoints: CalcValue,
+    condition?: CharacterCondition,
+    feature: string,
+  }
+
+  type CharacterSocialStatus = {
+    id: number,
+    name: string,
+    glory: CalcValue,
+    initialCapital: CalcValue,
   }
 
   type Character = {

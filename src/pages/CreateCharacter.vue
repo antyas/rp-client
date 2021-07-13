@@ -3,7 +3,6 @@
     <w-input
       v-model="hero.name"
       class="mb2"
-      outline
     >
       Имя
     </w-input>
@@ -14,7 +13,6 @@
       item-label-key="name"
       item-value-key="id"
       class="mb2"
-      outline
     >
       Раса
     </w-select>
@@ -25,7 +23,6 @@
       item-label-key="name"
       item-value-key="id"
       class="mb2"
-      outline
     >
       Класс
     </w-select>
@@ -36,19 +33,21 @@
 import { defineComponent, reactive } from "vue";
 import { useCharacters } from '@/core/characters';
 import { useContent, EContent } from '@/core/content';
+import { unshift } from "@/core/utils/array";
 
 const { create } = useCharacters();
 const { list: classes } = useContent<CharacterClass>(EContent.Classes);
 const { list: races } = useContent<CharacterRace>(EContent.Races);
+const randomOptions: ContentSelectOption = { name: 'Случайно', id: -1 };
 
 export default defineComponent(() => ({
   create,
-  classes,
-  races,
+  classes: unshift<ContentSelectOption>(randomOptions, classes),
+  races: unshift<ContentSelectOption>(randomOptions, races),
   hero: reactive({
     name: '',
-    class: null,
-    race: null,
+    class: -1,
+    race: -1,
   }),
 }));
 </script>
