@@ -2,9 +2,10 @@ export { };
 
 declare global {
   type CalcValue = {
-    value: number,
+    base: number,
     dice: number,
     sign: 'plus' | 'minus' | 'both',
+    count?: number,
   }
 
   type ContentSelectOption = {
@@ -26,6 +27,7 @@ declare global {
     health?: number,
     magicka?: number,
     fatigue?: number,
+    cuteness?: number, 
   }
 
   type CharacterClass = {
@@ -49,7 +51,7 @@ declare global {
     pointsPerLevel: number,
     startPoints: CalcValue,
     condition?: CharacterCondition,
-    feature: string,
+    feature?: string,
   }
 
   type CharacterSocialStatus = {

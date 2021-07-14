@@ -38,12 +38,13 @@ import { unshift } from "@/core/utils/array";
 const { create } = useCharacters();
 const { list: classes } = useContent<CharacterClass>(EContent.Classes);
 const { list: races } = useContent<CharacterRace>(EContent.Races);
-const randomOptions: ContentSelectOption = { name: 'Случайно', id: -1 };
+const makeOptions = (list: ContentSelectOption[]) => 
+  unshift<ContentSelectOption>({ name: 'Случайно', id: -1 }, list);
 
 export default defineComponent(() => ({
   create,
-  classes: unshift<ContentSelectOption>(randomOptions, classes),
-  races: unshift<ContentSelectOption>(randomOptions, races),
+  classes: makeOptions(classes),
+  races: makeOptions(races),
   hero: reactive({
     name: '',
     class: -1,
