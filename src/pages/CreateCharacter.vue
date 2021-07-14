@@ -11,7 +11,7 @@
       v-model="hero.race"
       :items="races"
       item-label-key="name"
-      item-value-key="id"
+      return-object
       class="mb2"
     >
       Раса
@@ -21,10 +21,30 @@
       v-model="hero.class"
       :items="classes"
       item-label-key="name"
-      item-value-key="id"
+      return-object
       class="mb2"
     >
       Класс
+    </w-select>
+
+    <w-select
+      v-model="hero.age"
+      :items="ages"
+      item-label-key="name"
+      return-object
+      class="mb2"
+    >
+      Возраст
+    </w-select>
+
+    <w-select
+      v-model="hero.socialStatus"
+      :items="statuses"
+      item-label-key="name"
+      return-object
+      class="mb2"
+    >
+      Возраст
     </w-select>
   </div>
 </template>
@@ -38,17 +58,23 @@ import { unshift } from "@/core/utils/array";
 const { create } = useCharacters();
 const { list: classes } = useContent<CharacterClass>(EContent.Classes);
 const { list: races } = useContent<CharacterRace>(EContent.Races);
-const makeOptions = (list: ContentSelectOption[]) => 
-  unshift<ContentSelectOption>({ name: 'Случайно', id: -1 }, list);
+const { list: ages } = useContent<CharacterAge>(EContent.Ages);
+const { list: statuses } = useContent<CharacterSocialStatus>(EContent.SocialStatuses);
+const defaultOption: ContentSelectOption = { name: 'Случайно', id: -1 };
+const makeOptions = (list: ContentSelectOption[]) => unshift(defaultOption, list);
 
 export default defineComponent(() => ({
   create,
   classes: makeOptions(classes),
   races: makeOptions(races),
+  ages: makeOptions(ages),
+  statuses: makeOptions(statuses),
   hero: reactive({
     name: '',
-    class: -1,
-    race: -1,
+    class: defaultOption,
+    race: defaultOption,
+    age: defaultOption,
+    socialStatus: defaultOption,
   }),
 }));
 </script>

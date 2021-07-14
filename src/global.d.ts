@@ -66,5 +66,7 @@ declare global {
     name?: string,
     class?: CharacterClass,
     race?: CharacterRace,
+    age?: CharacterAge,
+    socialStatus?: CharacterSocialStatus,
   };
 }
