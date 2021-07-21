@@ -1,4 +1,4 @@
-import { ref, reactive, readonly } from 'vue';
+import { computed } from 'vue';
 import { removeByProp, updateOneByProp } from './utils/array';
 import { useLogger } from './logger';
 import { useLocalStorageCollection } from './ls';
@@ -6,18 +6,18 @@ import { useLocalStorageCollection } from './ls';
 const logger = useLogger('characters');
 const collection = useLocalStorageCollection('characters');
 
-let active = reactive<Character>({ id: -1 });
-const list = ref<Character[]>([]);
+let active: Character = { id: -1 };
+let list: Character[] = [];
 
 const deleteById = async (id: number) => {
   logger.print('deleteById', id);
   collection.remove(id);
-  list.value = removeByProp('id', id, list.value);
+  list = removeByProp('id', id, list);
 };
 
 const clearActive = async () => {
   logger.print('clearActive', active);
-  active = reactive<Character>({ id: -1 });
+  active = { id: -1 };
 };
 
 const deleteActive = async () => {
@@ -27,35 +27,35 @@ const deleteActive = async () => {
 
 const updateActive = async () => {
   logger.print('updateActive', active);
-  list.value = updateOneByProp('id', active, list.value);
+  list = updateOneByProp('id', active, list);
   collection.update(active);
 };
 
 const create = async (character: Character) => {
   logger.print('create', character);
-  list.value.unshift(character);
+  list.unshift(character);
   collection.add(character);
 }
 
 const setActive = async (character: Character) => { 
   logger.print('setActive', character);
-  active = reactive<Character>(character) 
+  active = character;
 };
 
 export const initCharacters = async () => {
-  list.value = collection.all();
-  logger.print('init', list.value);
+  list = collection.all();
+  logger.print('init', list);
 };
 
 export const useCharacters = () => ({
-  list: readonly(list),
+  list: computed(() => list),
   deleteById,
   setActive,
   create
 });
 
 export const useCharacter = () => ({
-  active: readonly(active),
+  active: computed(() => active),
   remove: deleteActive,
   update: updateActive,
   clear: clearActive,

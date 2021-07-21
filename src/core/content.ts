@@ -1,38 +1,32 @@
-import classes from '@/content/classes';
-import races from '@/content/races';
-import ages from '@/content/ages';
-import socialStatuses from '@/content/social-statuses';
-import { findByProp, findOneByProp } from './utils/array';
+import { computed, ref } from 'vue';
+import { pandora } from '../content/pandora';
+import { useLogger } from './logger';
+import { useLocalStorage } from './ls';
+import { findOneByProp, unshift } from './utils/array';
 
-export enum EContent {
-  Classes,
-  Races,
-  Ages,
-  SocialStatuses,
-}
+const logger = useLogger('content');
+const ls = useLocalStorage();
 
-export type Content = (
-  CharacterClass 
-  | CharacterRace 
-  | CharacterAge 
-  | CharacterSocialStatus
-);
+const games = ref([pandora]);
 
-const getContent = <T extends Content>(content: EContent): T[] => {
-  switch (content) {
-    case EContent.Classes: return classes as T[];
-    case EContent.Races: return races as T[];
-    case EContent.Ages: return ages as T[];
-    case EContent.SocialStatuses: return socialStatuses as T[];
-  }
-}
+const gameCode = ref(ls.get('game-code'));
+const game = computed(() => findOneByProp('code', gameCode.value, games.value) || null);
 
-export const useContent = <T extends Content>(content: EContent) => {
-  const list = getContent<T>(content);
-  
-  return {
-    list,
-    get: (id: number) => findOneByProp<T>('id', id, list),
-    find: (prop: keyof T, value: any) => findByProp(prop, value, list),
-  }
-}
+const setGame = (code: string) => {
+  logger.print('setGame', code);
+  gameCode.value = code;
+  ls.set('game-code', code);
+};
+
+const defaultOption: ContentSelectOption = { name: 'Случайно', id: -1 };
+const makeOptions = (list: ContentSelectOption[]) => unshift(defaultOption, list);
+
+const gameListsOptions = computed(() => ({
+  classes: makeOptions(game.value?.classes || []),
+  races: makeOptions(game.value?.races || []),
+  ages: makeOptions(game.value?.ages || []),
+  statuses: makeOptions(game.value?.socialStatuses || []),
+}));
+
+export const useContent = () => ({ games, game, setGame, gameCode });
+export const useGameListsSelectOptions = () => ({ gameListsOptions, defaultOption });

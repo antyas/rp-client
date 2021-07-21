@@ -1,7 +1,7 @@
 import { createWebHistory, createRouter } from "vue-router";
 import Main from '../pages/Main.vue';
-import CharactersList from '@/pages/CharactersList.vue';
-import CreateCharacter from '@/pages/CreateCharacter.vue';
+import CharactersList from '../pages/CharactersList.vue';
+import CreateCharacter from '../pages/CreateCharacter.vue';
 
 const routes = [
   {

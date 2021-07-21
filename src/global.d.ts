@@ -1,6 +1,15 @@
 export { };
 
 declare global {
+  type GameContent = {
+    name: string,
+    code: string,
+    classes: CharacterClass[],
+    races: CharacterRace[],
+    ages: CharacterAge[],
+    socialStatuses: CharacterSocialStatus[],
+  } 
+
   type CalcValue = {
     base: number,
     dice: number,

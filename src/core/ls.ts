@@ -51,3 +51,8 @@ export const useLocalStorageCollection = (name: string) => ({
   remove: (id: number) => remove(name, id),
   getOne: <T extends ILSItem>(id: number) => findOne<T>(name, id),
 });
+
+export const useLocalStorage = () => ({
+  set: (key: string, data: string) => localStorage.setItem(key, data),
+  get: (key: string) => localStorage.getItem(key),
+});

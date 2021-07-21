@@ -20,6 +20,7 @@
 import { defineComponent, onMounted } from "vue";
 import { initCharacters } from '@/core/characters';
 import CharacterDeleteModal from "@/components/character/CharacterDeleteModal.vue";
+import { useContent } from "./core/content";
 
 export default defineComponent({
   components: {
@@ -30,6 +31,10 @@ export default defineComponent({
     onMounted(() => {
       initCharacters();
     });
+
+    return {
+      content: useContent(),
+    }
   },
 });
 </script>
