@@ -8,7 +8,7 @@ declare global {
     races: CharacterRace[],
     ages: CharacterAge[],
     socialStatuses: CharacterSocialStatus[],
-  } 
+  }
 
   type CalcValue = {
     base: number,
