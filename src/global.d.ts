@@ -22,59 +22,56 @@ declare global {
     id: number,
   }
 
-  type CharacterAtributes = {
-    strength: number,
-    perception: number,
-    endurance: number,
-    charisma: number,
-    intelligence: number,
-    agility: number,
-    luck: number
-  };
-
-  type CharacterCondition = {
-    health?: number,
-    magicka?: number,
-    fatigue?: number,
-    cuteness?: number, 
+  type Item = {
+    name: string,
+    value: number,
   }
 
-  type CharacterClass = {
-    id: number,
+  type Atribute = {
     name: string,
-    attributes: CharacterAtributes,
-    feature: string,
-  };
-
-  type CharacterRace = {
-    id: number,
-    name: string,
-    attributes: CharacterAtributes,
-    condition: CharacterCondition,
-    feature: string,
+    value: number,
+    skills: Item[]
   }
+
+  // type Atributes = {
+  //   physique?: Atribute,
+  //   control?: Atribute,
+  //   mind?: Atribute,
+  //   instincts?: Atribute,
+  //   soul?: Atribute,
+  // }
+
+  // type Conditions = {
+  //   health?: Item,
+  //   magicka?: Item,
+  //   stamina?: Item,
+  //   fatigue?: Item,
+  //   intelligence?: Item,
+  //   cuteness?: Item,
+  //   immunity?: Item,
+  //   capacity?: Item,
+  //   meleeDamage?: Item,
+  // }
 
   type CharacterAge = {
     id: number,
     name: string,
     pointsPerLevel: number,
     startPoints: CalcValue,
-    condition?: CharacterCondition,
-    feature?: string,
+    condition?: Condition,
   }
 
   type CharacterSocialStatus = {
     id: number,
     name: string,
-    glory: CalcValue,
     initialCapital: CalcValue,
   }
 
   type Character = {
     id: number,
     name?: string,
-    class?: CharacterClass,
-    race?: CharacterRace,
+    atributes?: Atribute[],
+    conditions?: Condition[]
     age?: CharacterAge,
     socialStatus?: CharacterSocialStatus,
   };
