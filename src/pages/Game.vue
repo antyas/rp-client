@@ -1,10 +1,6 @@
-<template>
-  <div class="game-page">
-    <w-tabs
-      :items="tabs"
-    >
-</w-tabs>
-  </div>
+<template lang="pug">
+.game-page
+  w-tabs(:items="tabs")
 </template>
 
 <script lang="ts">

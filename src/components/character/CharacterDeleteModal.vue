@@ -1,18 +1,15 @@
-<template>
-  <w-dialog
-    :model-value="isOpen"
-    title="Точно хочешь удалить персонажа?"
-    persistent
-    :width="550"
-    @input="switchModal"
-  >
-    {{ active.name }} будет удален безвозвратно
-    <template #actions>
-      <div class="spacer" />
-      <w-button class="mr2" bg-color="error" @click="switchModal(false)">Нет</w-button>
-      <w-button bg-color="success" @click="removeCharacter">Да</w-button>
-    </template>
-  </w-dialog>
+<template lang="pug">
+w-dialog(
+  :model-value="isOpen"
+  title="Точно хочешь удалить персонажа?"
+  persistent
+  :width="550"
+  @input="switchModal"
+) {{ active.name }} будет удален безвозвратно
+  template(#actions)
+    .spacer
+    w-button.mr2(bg-color="error" @click="switchModal(false)") Нет
+    w-button(bg-color="success" @click="removeCharacter") Да
 </template>
 
 <script lang="ts">

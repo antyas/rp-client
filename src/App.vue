@@ -1,19 +1,15 @@
-<template>
-  <w-app>
-    <header>
-      <w-toolbar shadow>
-        <div class="title2">RP App</div>
-        <div class="spacer" />
-      </w-toolbar>
-    </header>
-    <main class="grow ma2">
-      <router-view />
-    </main>
+<template lang="pug">
+w-app
+  header
+    w-toolbar(shadow)
+      .title2 RP App
+      .spacer
+      
+  main.grow.ma2
+    router-view
 
-    <div class="modals pa2">
-      <character-delete-modal />
-    </div>
-  </w-app>
+  .modals.pa2
+    character-delete-modal
 </template>
 
 <script lang="ts">

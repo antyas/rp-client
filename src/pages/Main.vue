@@ -1,18 +1,13 @@
-<template>
-  <div class="main-page">
-    <w-button
-      v-for="game in games"
-      :key="game.code"
-      class="ma1"
-      color="primary"
-      outline
-      md
-      @click="onClickGame(game)"
-    >
-      {{ game.name }}
-    </w-button>
-    
-  </div>
+<template lang="pug">
+.main-page
+  w-button.ma1(
+    v-for="game in games"
+    :key="game.code"
+    color="primary"
+    outline
+    md
+    @click="onClickGame(game)"
+  ) {{ game.name }}
 </template>
 
 <script lang="ts">

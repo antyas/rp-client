@@ -1,52 +1,34 @@
-<template>
-  <div class="create-characters-page">
-    <w-input
-      v-model="hero.name"
-      class="mb2"
-    >
-      Имя
-    </w-input>
+<template lang="pug">
+.create-characters-page
+  w-input.mb2(v-model="hero.name") Имя
 
-    <w-select
-      v-model="hero.race"
-      :items="gameListsOptions.races"
-      item-label-key="name"
-      return-object
-      class="mb2"
-    >
-      Раса
-    </w-select>
+  w-select.mb2(
+    v-model="hero.race"
+    :items="gameListsOptions.races"
+    item-label-key="name"
+    return-object
+  ) Раса
 
-    <w-select
-      v-model="hero.class"
-      :items="gameListsOptions.classes"
-      item-label-key="name"
-      return-object
-      class="mb2"
-    >
-      Класс
-    </w-select>
+  w-select.mb2(
+    v-model="hero.class"
+    :items="gameListsOptions.classes"
+    item-label-key="name"
+    return-object
+  ) Класс
 
-    <w-select
-      v-model="hero.age"
-      :items="gameListsOptions.ages"
-      item-label-key="name"
-      return-object
-      class="mb2"
-    >
-      Возраст
-    </w-select>
+  w-select.mb2(
+    v-model="hero.age"
+    :items="gameListsOptions.ages"
+    item-label-key="name"
+    return-object
+  ) Возраст
 
-    <w-select
-      v-model="hero.socialStatus"
-      :items="gameListsOptions.statuses"
-      item-label-key="name"
-      return-object
-      class="mb2"
-    >
-      Статус
-    </w-select>
-  </div>
+  w-select.mb2(
+    v-model="hero.socialStatus"
+    :items="gameListsOptions.statuses"
+    item-label-key="name"
+    return-object
+  ) Статус
 </template>
 
 <script lang="ts">

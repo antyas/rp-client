@@ -1,25 +1,17 @@
-<template>
-  <div class="characters-list-page">
-    <w-button 
-      class="ma1" 
-      bg-color="primary" 
-      color="white" 
-      md 
-      route="/create-character"
-    >
-      Создать
-    </w-button>
+<template lang="pug">
+.characters-list-page
+  w-button.ma1(
+    bg-color="primary" 
+    color="white" 
+    md 
+    route="/create-character"
+  ) Создать
 
-    <w-list :items="list" color="primary" hover>
-      <template #item="{ item }">
-        <w-flex align-center justify-space-between>
-          <w-button color="primary" text md>{{ item.name }}</w-button>
-
-          <w-button text lg icon="mdi mdi-close" @click="openRemoveModal(item)" />
-        </w-flex>
-      </template>
-    </w-list>
-  </div>
+  w-list(:items="list" color="primary" hover)
+    template(#item="{ item }")
+      w-flex(align-center justify-space-between)
+        w-button(color="primary" text md) {{ item.name }}
+        w-button(text lg icon="mdi mdi-close" @click="openRemoveModal(item)")
 </template>
 
 <script lang="ts">
