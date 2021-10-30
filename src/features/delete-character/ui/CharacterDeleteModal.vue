@@ -14,8 +14,8 @@ w-dialog(
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { useModal, EModal } from '@/core/modal';
-import { useCharacter } from '@/core/characters';
+import { useModal, EModal } from '@/shared/hooks/modal';
+import { useCharacter } from '@/entities/character/model';
 
 const { active, remove } = useCharacter();
 const { switchModal, isOpen } = useModal(EModal.CharacterDelete);

@@ -1,4 +1,4 @@
-import { findOneByProp, removeByProp, updateOneByProp } from './utils/array';
+import { findOneByProp, removeByProp, updateOneByProp } from '@/shared/lib/array';
 
 interface ILSItem {
   id: number;

@@ -1,8 +1,8 @@
 import { computed, ref } from 'vue';
-import { pandora } from '../content/pandora';
-import { useLogger } from './logger';
-import { useLocalStorage } from './ls';
-import { findOneByProp, unshift } from './utils/array';
+import { pandora } from '../../content/pandora';
+import { useLogger } from '@/shared/hooks/logger';
+import { useLocalStorage } from '@/shared/hooks/ls';
+import { findOneByProp, unshift } from '@/shared/lib/array';
 
 const logger = useLogger('content');
 const ls = useLocalStorage();

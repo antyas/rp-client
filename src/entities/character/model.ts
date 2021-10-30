@@ -1,7 +1,7 @@
 import { computed } from 'vue';
-import { removeByProp, updateOneByProp } from './utils/array';
-import { useLogger } from './logger';
-import { useLocalStorageCollection } from './ls';
+import { removeByProp, updateOneByProp } from '@/shared/lib/array';
+import { useLogger } from '@/shared/hooks/logger';
+import { useLocalStorageCollection } from '@/shared/hooks/ls';
 
 const logger = useLogger('characters');
 const collection = useLocalStorageCollection('characters');

@@ -6,7 +6,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { useRouter } from 'vue-router';
-import { useContent } from "@/core/content";
+import { useContent } from "@/shared/hooks/content";
 
 export default defineComponent(() => {
   const router = useRouter();

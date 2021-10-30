@@ -16,8 +16,8 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { useModal, EModal } from '@/core/modal';
-import { useCharacters } from '@/core/characters';
+import { useModal, EModal } from '@/shared/hooks/modal';
+import { useCharacters } from '@/entities/character/model';
 
 
 const { switchModal } = useModal(EModal.CharacterDelete);

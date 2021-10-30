@@ -1,5 +1,5 @@
 import { ref, computed } from 'vue';
-import { useLogger } from './logger';
+import { useLogger } from '@/shared/hooks/logger';
 
 const logger = useLogger('modal');
 
