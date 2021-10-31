@@ -5,7 +5,7 @@ w-dialog(
   persistent
   :width="550"
   @input="switchModal"
-) {{ active.name }} будет удален безвозвратно
+) {{ active?.name || '' }} будет удален безвозвратно
   template(#actions)
     .spacer
     w-button.mr2(bg-color="error" @click="switchModal(false)") Нет
@@ -15,18 +15,18 @@ w-dialog(
 <script lang="ts">
 import { defineComponent } from "vue";
 import { useModal, EModal } from '@/shared/hooks/modal';
-import { useCharacter } from '@/entities/character/store';
+import { useCharacterStore } from "@/entities/character";
 
-const { active, remove } = useCharacter();
+const characterStore = useCharacterStore();
 const { switchModal, isOpen } = useModal(EModal.CharacterDelete);
 
 const removeCharacter = () => {
   switchModal(false);
-  remove();
+  characterStore.deleteActive();
 };
 
 export default defineComponent(() => ({
-  active,
+  active: characterStore.active,
   isOpen,
   switchModal,
   removeCharacter,

@@ -3,20 +3,6 @@
   w-input.mb2(v-model="hero.name") Имя
 
   w-select.mb2(
-    v-model="hero.race"
-    :items="gameListsOptions.races"
-    item-label-key="name"
-    return-object
-  ) Раса
-
-  w-select.mb2(
-    v-model="hero.class"
-    :items="gameListsOptions.classes"
-    item-label-key="name"
-    return-object
-  ) Класс
-
-  w-select.mb2(
     v-model="hero.age"
     :items="gameListsOptions.ages"
     item-label-key="name"
@@ -33,19 +19,17 @@
 
 <script lang="ts">
 import { defineComponent, reactive } from "vue";
-import { useCharacters } from '@/entities/character/store';
 import { useGameListsSelectOptions } from '@/shared/hooks/content';
+import { useCharacterStore } from "@/entities/character";
 
-const { create } = useCharacters();
+const characterStore = useCharacterStore();
 const { gameListsOptions, defaultOption } = useGameListsSelectOptions();
 
 export default defineComponent(() => ({
-  create,
+  create: characterStore.create,
   gameListsOptions,
   hero: reactive({
     name: '',
-    class: defaultOption,
-    race: defaultOption,
     age: defaultOption,
     socialStatus: defaultOption,
   }),

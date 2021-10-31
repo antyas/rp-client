@@ -13,10 +13,9 @@ w-app
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted } from "vue";
-import { initCharacters } from '@/entities/character/store';
+import { defineComponent } from "vue";
 import CharacterDeleteModal from "@/features/delete-character/ui/CharacterDeleteModal.vue";
-import { useContent } from "@/shared/hooks/content";
+import { useCharacterStore } from "../entities/character";
 
 export default defineComponent({
   components: {
@@ -24,13 +23,8 @@ export default defineComponent({
   },
 
   setup() {
-    onMounted(() => {
-      initCharacters();
-    });
-
-    return {
-      content: useContent(),
-    }
+    const characterStore = useCharacterStore();
+    characterStore.init();
   },
 });
 </script>

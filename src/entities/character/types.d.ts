@@ -1,4 +1,4 @@
-import { CharacterAge, SocialStatus } from "../content";
+import type { CharacterAge, SocialStatus } from "../content";
 
 type Character = {
   id: number,
