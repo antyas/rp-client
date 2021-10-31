@@ -23,8 +23,7 @@ export default defineComponent({
   },
 
   setup() {
-    const characterStore = useCharacterStore();
-    characterStore.init();
+    useCharacterStore().init();
   },
 });
 </script>

@@ -1,4 +1,4 @@
-import { CharacterAge } from "../types";
+import { CharacterAge } from "../entities/content/types";
 
 const list: CharacterAge[] = [
   {
