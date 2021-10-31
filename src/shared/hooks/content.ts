@@ -1,5 +1,5 @@
 import { computed, ref } from 'vue';
-import { pandora } from '../../content/pandora';
+import { pandora } from '../content/pandora';
 import { useLogger } from '@/shared/hooks/logger';
 import { useLocalStorage } from '@/shared/hooks/ls';
 import { findOneByProp, unshift } from '@/shared/lib/array';

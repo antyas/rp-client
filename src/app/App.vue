@@ -14,7 +14,7 @@ w-app
 
 <script lang="ts">
 import { defineComponent, onMounted } from "vue";
-import { initCharacters } from '@/entities/character/model';
+import { initCharacters } from '@/entities/character/store';
 import CharacterDeleteModal from "@/features/delete-character/ui/CharacterDeleteModal.vue";
 import { useContent } from "@/shared/hooks/content";
 

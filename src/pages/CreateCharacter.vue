@@ -33,7 +33,7 @@
 
 <script lang="ts">
 import { defineComponent, reactive } from "vue";
-import { useCharacters } from '@/entities/character/model';
+import { useCharacters } from '@/entities/character/store';
 import { useGameListsSelectOptions } from '@/shared/hooks/content';
 
 const { create } = useCharacters();

@@ -1,3 +1,5 @@
+import { CharacterAge } from "../types";
+
 const list: CharacterAge[] = [
   {
     id: 0,
