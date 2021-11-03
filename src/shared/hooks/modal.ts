@@ -1,7 +1,5 @@
 import { ref, computed } from 'vue';
-import { useLogger } from '@/shared/hooks/logger';
 
-const logger = useLogger('modal');
 
 export enum EModal {
   None = 'none',
@@ -11,7 +9,6 @@ export enum EModal {
 const activeModal = ref(EModal.None);
 
 const setModal = (modal: EModal): void => {
-  logger.print('setModal', modal);
   activeModal.value = modal;
 };
 

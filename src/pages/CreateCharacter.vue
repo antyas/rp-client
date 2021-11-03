@@ -4,14 +4,14 @@
 
   w-select.mb2(
     v-model="hero.age"
-    :items="gameListsOptions.ages"
+    :items="options.ages"
     item-label-key="name"
     return-object
   ) Возраст
 
   w-select.mb2(
     v-model="hero.socialStatus"
-    :items="gameListsOptions.statuses"
+    :items="options.statuses"
     item-label-key="name"
     return-object
   ) Статус
@@ -19,19 +19,24 @@
 
 <script lang="ts">
 import { defineComponent, reactive } from "vue";
-import { useGameListsSelectOptions } from '@/shared/hooks/content';
 import { useCharacterStore } from "@/entities/character";
+import { useContentStore, defaultOption } from "@/entities/content";
 
-const characterStore = useCharacterStore();
-const { gameListsOptions, defaultOption } = useGameListsSelectOptions();
+export default defineComponent(() => {
+  const characterStore = useCharacterStore();
+  const contentStore = useContentStore();
 
-export default defineComponent(() => ({
-  create: characterStore.create,
-  gameListsOptions,
-  hero: reactive({
-    name: '',
-    age: defaultOption,
-    socialStatus: defaultOption,
-  }),
-}));
+  return {
+    create: characterStore.create,
+    options: {
+      ages: contentStore.ageOptions,
+      statuses: contentStore.statusOptions,
+    },
+    hero: reactive({
+      name: '',
+      age: defaultOption,
+      socialStatus: defaultOption,
+    }),
+  };
+});
 </script>

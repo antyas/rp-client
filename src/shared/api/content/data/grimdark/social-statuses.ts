@@ -1,4 +1,4 @@
-import { SocialStatus } from "../entities/content/types";
+import { SocialStatus } from "../../types";
 
 const list: SocialStatus[] = [
   {

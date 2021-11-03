@@ -9,8 +9,8 @@ import '@mdi/font/css/materialdesignicons.min.css';
 const app = createApp(App);
 
 new WaveUI(app);
+app.use(router)
+app.use(createPinia());
 
-app.use(router);
-app.use(createPinia())
 
 app.mount('#app');

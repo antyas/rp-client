@@ -6,28 +6,21 @@
     color="primary"
     outline
     md
-    @click="onClickGame(game)"
+    @click="openGame(game)"
   ) {{ game.name }}
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { useRouter } from 'vue-router';
-import { useContent } from "@/shared/hooks/content";
+import { useGameStore } from "@/entities/game";
+import { openGame } from "@/processes/open-game";
 
 export default defineComponent(() => {
-  const router = useRouter();
-  const { games, setGame } = useContent();
-
-  const onClickGame = (game: GameContent) => {
-    setGame(game.code);
-    router.push('/create-character');
-  };
+  const gameStore = useGameStore();
 
   return {
-    games,
-    onClickGame,
-    log: console.log,
+    games: gameStore.list,
+    openGame,
   };
 });
 </script>

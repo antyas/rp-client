@@ -11,3 +11,12 @@ export type SocialStatus = {
   name: string,
   initialCapital: CalcValue,
 }
+
+export type GameContent = {
+  ages: CharacterAge[],
+  statuses: SocialStatus[],
+}
+
+export type GameContentMap = {
+  [ket: string]: GameContent
+}

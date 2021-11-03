@@ -1,21 +1,21 @@
 import { defineStore } from 'pinia';
-import * as api from '../api';
-import { CharacterAge, SocialStatus } from '../types';
+import { CharacterAge, SocialStatus } from '@/shared/api/content';
+import { unshift } from '@/shared/lib/array';
 
-interface CharacterStoreState {
+interface ContentStoreState {
   ages: CharacterAge[],
   statuses: SocialStatus[],
 }
 
-export const useCharacterStore = defineStore('character', {
-  state: (): CharacterStoreState => ({
+export const defaultOption: ContentSelectOption = { name: 'Случайно', id: -1 };
+
+export const useContentStore = defineStore('content', {
+  state: (): ContentStoreState => ({
     ages: [],
     statuses: [],
   }),
-  actions: {
-    async init() {
-      this.ages = await api.loadAges();
-      this.statuses = await api.loadSocialStatuses();
-    },
+  getters: {
+    ageOptions: (state) => unshift(defaultOption, state.ages),
+    statusOptions: (state) => unshift(defaultOption, state.statuses),
   }
 });

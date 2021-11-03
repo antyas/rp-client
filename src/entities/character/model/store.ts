@@ -1,7 +1,7 @@
 import { removeByProp } from '@/shared/lib/array';
 import { defineStore } from 'pinia';
-import * as api from '../api';
-import { Character } from '../types';
+import * as api from '@/shared/api/character';
+import type { Character } from '@/shared/api/character';
 
 interface CharacterStoreState {
   list: Character[],

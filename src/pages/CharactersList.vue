@@ -17,16 +17,18 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { useModal, EModal } from '@/shared/hooks/modal';
-import { Character, useCharacterStore } from "@/entities/character";
+import { useCharacterStore } from "@/entities/character";
+import { Character } from "@/shared/api/character";
 
+export default defineComponent(() => {
+  const { switchModal } = useModal(EModal.CharacterDelete);
+  const characterStore = useCharacterStore();
 
-const { switchModal } = useModal(EModal.CharacterDelete);
-const characterStore = useCharacterStore();
+  const openRemoveModal = (item: Character) => {
+    characterStore.active = item;
+    switchModal(true);
+  };
 
-const openRemoveModal = (item: Character) => {
-  characterStore.active = item;
-  switchModal(true);
-};
-
-export default defineComponent(() => ({ list: characterStore.list, openRemoveModal }));
+  return { list: characterStore.list, openRemoveModal };
+});
 </script>

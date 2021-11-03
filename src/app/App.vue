@@ -14,16 +14,11 @@ w-app
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import CharacterDeleteModal from "@/features/delete-character/ui/CharacterDeleteModal.vue";
-import { useCharacterStore } from "../entities/character";
+import { initApp } from "@/processes/init-app";
 
 export default defineComponent({
-  components: {
-    CharacterDeleteModal,
-  },
-
   setup() {
-    useCharacterStore().init();
+    initApp();
   },
 });
 </script>
