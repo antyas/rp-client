@@ -4,39 +4,30 @@
 
   w-select.mb2(
     v-model="hero.age"
-    :items="options.ages"
+    :items="contentStore.ageOptions"
     item-label-key="name"
     return-object
   ) Возраст
 
   w-select.mb2(
     v-model="hero.socialStatus"
-    :items="options.statuses"
+    :items="contentStore.statusOptions"
     item-label-key="name"
     return-object
   ) Статус
 </template>
 
-<script lang="ts">
-import { defineComponent, reactive } from "vue";
+<script setup lang="ts">
+import { reactive } from "vue";
 import { useCharacterStore } from "@/entities/character";
 import { useContentStore, defaultOption } from "@/entities/content";
 
-export default defineComponent(() => {
-  const characterStore = useCharacterStore();
-  const contentStore = useContentStore();
+const characterStore = useCharacterStore();
+const contentStore = useContentStore();
 
-  return {
-    create: characterStore.create,
-    options: {
-      ages: contentStore.ageOptions,
-      statuses: contentStore.statusOptions,
-    },
-    hero: reactive({
-      name: '',
-      age: defaultOption,
-      socialStatus: defaultOption,
-    }),
-  };
+const hero = reactive({
+  name: '',
+  age: defaultOption,
+  socialStatus: defaultOption,
 });
 </script>

@@ -1,7 +1,7 @@
 <template lang="pug">
 .main-page
   w-button.ma1(
-    v-for="game in games"
+    v-for="game in gameStore.list"
     :key="game.code"
     color="primary"
     outline
@@ -10,17 +10,9 @@
   ) {{ game.name }}
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
+<script setup lang="ts">
 import { useGameStore } from "@/entities/game";
 import { openGame } from "@/processes/open-game";
 
-export default defineComponent(() => {
-  const gameStore = useGameStore();
-
-  return {
-    games: gameStore.list,
-    openGame,
-  };
-});
+const gameStore = useGameStore();
 </script>
