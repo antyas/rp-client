@@ -12,18 +12,22 @@
       w-flex(align-center justify-space-between)
         w-button(color="primary" text md) {{ item.name }}
         w-button(text lg icon="mdi mdi-close" @click="openRemoveModal(item)")
+  
+  character-delete-drawer(v-model="isDeleteDrawerOpen")
 </template>
 
 <script setup lang="ts">
-import { useModal, EModal } from '@/shared/hooks/modal';
+import { ref } from '@vue/reactivity';
 import { useCharacterStore } from "@/entities/character";
-import { Character } from "@/shared/api/character";
+import type { Character } from "@/shared/api/character";
+import { CharacterDeleteDrawer } from '@/features/delete-character';
 
-const { switchModal } = useModal(EModal.CharacterDelete);
 const characterStore = useCharacterStore();
 
 const openRemoveModal = (item: Character) => {
   characterStore.active = item;
-  switchModal(true);
+  isDeleteDrawerOpen.value = true;
 };
+
+const isDeleteDrawerOpen = ref(false);
 </script>
