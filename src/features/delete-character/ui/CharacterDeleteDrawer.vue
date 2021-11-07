@@ -2,14 +2,15 @@
 w-drawer(
   :model-value="props.modelValue"
   bottom
-  height="100px"
+  fit-content
   @update:model-value="updateValue"
 )
-  .title4.text-center {{ characterStore.active?.name || '' }} будет удален безвозвратно
-  .w-flex.pa2
-    .spacer
-    w-button.mr2(bg-color="error" @click="updateValue(false)") Отмена
-    w-button(bg-color="success" @click="removeCharacter") Удалить
+  .w-flex.column.pa2
+    .title4.text-center {{ characterStore.active?.name || '' }} будет удален безвозвратно
+    .w-flex.pa2
+      .spacer
+      w-button.mr2(bg-color="error" @click="updateValue(false)") Отмена
+      w-button(bg-color="success" @click="removeCharacter") Удалить
 </template>
 
 <script setup lang="ts">
