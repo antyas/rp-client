@@ -1,24 +1,24 @@
 import { createWebHistory, createRouter } from "vue-router";
 import Main from '@/pages/Main.vue';
-import CharactersList from '@/pages/CharactersList.vue';
+import Game from '@/pages/Game.vue';
 import CreateCharacter from '@/pages/CreateCharacter.vue';
 
-const routes = [
+export const routes = [
   {
     path: '/',
     name: 'main',
     component: Main
   },
   {
-    path: '/characters-list',
+    path: '/game/:gameCode',
     name: 'characters-list',
-    component: CharactersList
+    component: Game
   },
-  {
-    path: '/create-character',
-    name: 'create-character',
-    component: CreateCharacter
-  }
+  // {
+  //   path: '/game/:gameCode/create-character',
+  //   name: 'create-character',
+  //   component: CreateCharacter
+  // }
 ];
 
 const router = createRouter({

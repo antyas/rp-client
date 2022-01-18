@@ -13,9 +13,14 @@ w-app
 </template>
 
 <script setup lang="ts">
-import { initApp } from "@/processes/init-app";
+import { gameModel } from '@/entities/game';
+import { gameService } from '@/shared/api/game';
 
-initApp();
+const init = async () => {
+  gameModel.store.list = await gameService.fetch();
+};
+
+init();
 </script>
 
 <style>

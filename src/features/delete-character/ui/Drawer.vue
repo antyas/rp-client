@@ -6,7 +6,7 @@ w-drawer(
   @update:model-value="updateValue"
 )
   .w-flex.column.pa2
-    .title4.text-center {{ characterStore.active?.name || '' }} будет удален безвозвратно
+    .title4.text-center {{ characterModel.store.active?.name || '' }} будет удален безвозвратно
     .w-flex.pa2
       .spacer
       w-button.mr2(bg-color="error" @click="updateValue(false)") Отмена
@@ -14,7 +14,8 @@ w-drawer(
 </template>
 
 <script setup lang="ts">
-import { useCharacterStore } from '@/entities/character';
+import { characterModel } from '@/entities/character';
+import * as deleteCharacterModel from '../model';
 
 const props = defineProps<{
   modelValue: boolean;
@@ -24,11 +25,10 @@ const emit = defineEmits<{
   (e: 'update:modelValue', value: boolean): void;
 }>();
 
-const characterStore = useCharacterStore();
 const updateValue = (value: boolean) => emit('update:modelValue', value);
 
 const removeCharacter = () => {
-  characterStore.deleteActive();
+  deleteCharacterModel.remove();
   updateValue(false)
 };
 </script>

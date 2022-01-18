@@ -1,0 +1,1 @@
+export const defaultOption: ContentSelectOption = { name: 'Случайно', id: -1 };

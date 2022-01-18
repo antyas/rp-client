@@ -1,5 +1,6 @@
-export const findOneByProp = <T>(prop: keyof T, value: any, array: T[]) =>
-  array.find(item => item[prop] === value);
+export function find<T>(fn: (x: T) => boolean, list: T[]): T | undefined {
+  return list.find(fn);
+}
 
 export const findByProp = <T>(prop: keyof T, value: any, array: T[]) =>
   array.filter(item => item[prop] === value);

@@ -1,1 +1,1 @@
-export * from './model/store'
+export * as characterModel from './model'

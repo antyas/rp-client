@@ -1,1 +1,1 @@
-export * from './model/store';
+export * as contentModel from './model';

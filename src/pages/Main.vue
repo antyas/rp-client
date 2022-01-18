@@ -1,18 +1,18 @@
 <template lang="pug">
 .main-page
   w-button.ma1(
-    v-for="game in gameStore.list"
+    v-for="game in gameModel.store.list"
     :key="game.code"
     color="primary"
     outline
     md
-    @click="openGame(game)"
+    @click="router.push('/game/' + game.code)"
   ) {{ game.name }}
 </template>
 
 <script setup lang="ts">
-import { useGameStore } from "@/entities/game";
-import { openGame } from "@/processes/open-game";
+import { gameModel } from "@/entities/game";
+import { useRouter } from "vue-router";
 
-const gameStore = useGameStore();
+const router = useRouter();
 </script>

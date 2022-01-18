@@ -3,7 +3,7 @@ export type CharacterAge = {
   name: string,
   pointsPerLevel: number,
   startPoints: CalcValue,
-  condition?: Condition,
+  // condition?: Condition,
 }
 
 export type SocialStatus = {

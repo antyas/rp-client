@@ -1,14 +1,20 @@
-import { Game } from '@/shared/api/game';
+import type { Game } from '@/shared/api/game';
 import { defineStore } from 'pinia';
 
 interface GameStoreState {
   list: Game[],
-  active: Game | null,
+  code: string,
 }
 
-export const useGameStore = defineStore('game', {
+export const useStore = defineStore('game', {
   state: (): GameStoreState => ({
     list: [],
-    active: null,
+    code: '',
   }),
+
+  getters: {
+    active(state): Game | undefined {
+      return state.list.find(game => game.code === state.code);
+    },
+  }
 });

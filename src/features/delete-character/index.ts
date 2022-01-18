@@ -1,5 +1,2 @@
-import CharacterDeleteDrawer from './ui/CharacterDeleteDrawer.vue';
-
-export { 
-  CharacterDeleteDrawer 
-};
+export { default as CharacterDeleteDrawer } from './ui/Drawer.vue';
+export * as deleteCharacterModel from './model';

@@ -1,1 +1,1 @@
-export * from './model/store';
+export * as gameModel from './model';
